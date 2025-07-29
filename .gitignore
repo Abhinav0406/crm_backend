@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# Django or Flask cache/database/migration files
+*.log
+*.sqlite3
+*.pot
+*.pyc
+db.sqlite3
+instance/
+*.mo
+*.migrations/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+MANIFEST
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Environment variable files
+.env
+.env.*
+
+# VS Code and other IDE settings
+.vscode/
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS and other OS clutter
+.DS_Store
+Thumbs.db

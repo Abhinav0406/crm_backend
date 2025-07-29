@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: jewelry-crm-backend
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn core.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: DB_NAME
+        fromDatabase:
+          name: jewelry-crm-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: jewelry-crm-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: jewelry-crm-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: jewelry-crm-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: jewelry-crm-db
+          property: port
+
+databases:
+  - name: jewelry-crm-db
+    databaseName: jewelry_crm_db
+    user: jewelry_crm_user

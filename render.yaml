@@ -2,8 +2,8 @@ services:
   - type: web
     name: jewelry-crm-backend
     env: python
-    buildCommand: ./build.sh
-    startCommand: gunicorn core.wsgi:application
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: gunicorn core.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -19,6 +19,10 @@ services:
         sync: false
       - key: DJANGO_SUPERUSER_EMAIL
         sync: false
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
 
 databases:
   - name: jewelry-crm-db

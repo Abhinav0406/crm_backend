@@ -23,6 +23,8 @@ services:
         value: False
       - key: ALLOWED_HOSTS
         value: ".onrender.com"
+      - key: FORCE_MIGRATE
+        value: true
 
 databases:
   - name: jewelry-crm-db

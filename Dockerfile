@@ -22,14 +22,17 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
+# Make build script executable
+RUN chmod +x build.sh
+
 # Create necessary directories
 RUN mkdir -p /app/media /app/staticfiles /app/logs
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Run build script during build time
+RUN ./build.sh
 
 # Expose port
 EXPOSE 8000
 
-# Run the application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"] 
+# Run the application with gunicorn
+CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"] 
